@@ -16,8 +16,6 @@
 
     <!-- adding external css  -->
     <link rel="stylesheet" href="style.css" />
-
-
 </head>
 
 <body>
@@ -27,12 +25,12 @@
             <div class="col-md-6">
                 <h2>Team A</h2>
                 <h4>Score: <span id="teamAScore">0/0</span></h4>
-                <h5>Over: <span id="teamAovers">0.0</span> (3 Overs)</h5>
+                <h5>Over: <span id="teamAOvers">0.0</span> (3 Overs)</h5>
             </div>
             <div class="col-md-6">
                 <h2>Team B</h2>
                 <h4>Score: <span id="teamBScore">0/0</span></h4>
-                <h5>Over: <span id="teamBovers">0.0</span> (3 Overs)</h5>
+                <h5>Over: <span id="teamBOvers">0.0</span> (3 Overs)</h5>
             </div>
         </div>
         <div class="row mt-4">
@@ -42,12 +40,12 @@
                     0 Runs
                 </button>
                 <button class="btn button-85" onclick="updateScore(1),updateOvers(1)">
-                     1 Run 
+                    1 Run
                 </button>
                 <button class="btn button-85" onclick="updateScore(2),updateOvers(1)">
                     2 Runs
                 </button>
-                <button class="btn " onclick="updateScore(3),updateOvers(1)">
+                <button class="btn" onclick="updateScore(3),updateOvers(1)">
                     3 Runs
                 </button>
             </div>
@@ -79,34 +77,34 @@
         let currentTeam = "A";
 
         // Declare Variables for updateOvers function
-        let teamAballs = 0;
-        let teamAovers = 0;
-        let teamBballs = 0;
-        let teamBovers = 0;
+        let teamABalls = 0;
+        let teamAOvers = 0;
+        let teamBBalls = 0;
+        let teamBOvers = 0;
 
         // function for overs
         function updateOvers(ball) {
-            if (currentTeam === "A" && teamAovers <= 2) {
-                teamAballs++;
-                if (teamAballs == 6) {
-                    teamAballs = 0;
-                    teamAovers++;
+            if (currentTeam === "A" && teamAOvers <= 2) {
+                teamABalls++;
+                if (teamABalls == 6) {
+                    teamABalls = 0;
+                    teamAOvers++;
                 }
                 document.querySelector(
-                    "#teamAovers"
-                ).textContent = `${teamAovers}.${teamAballs}`;
-                if (teamAWickets >= 10 || teamAovers > 2) {
+                    "#teamAOvers"
+                ).textContent = `${teamAOvers}.${teamABalls}`;
+                if (teamAWickets >= 10 || teamAOvers > 2) {
                     currentTeam = "B";
                 }
             } else {
-                teamBballs++;
-                if (teamBballs == 6) {
-                    teamBballs = 0;
-                    teamBovers++;
+                teamBBalls++;
+                if (teamBBalls == 6) {
+                    teamBBalls = 0;
+                    teamBOvers++;
                 }
                 document.querySelector(
-                    "#teamBovers"
-                ).textContent = `${teamBovers}.${teamBballs}`;
+                    "#teamBOvers"
+                ).textContent = `${teamBOvers}.${teamBBalls}`;
                 checkWinner();
             }
         }
@@ -143,7 +141,7 @@
             }
         }
         function checkWinner() {
-            if (teamBWickets >= 10 || teamBScore > teamAScore || teamBovers == 3) {
+            if (teamBWickets >= 10 || teamBScore > teamAScore || teamBOvers == 3) {
                 if (teamBScore > teamAScore) {
                     document.querySelector("#result").textContent = "Team B Wins!";
                 } else if (teamBScore == teamAScore) {
